@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoLoss</title>
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-bottom:10px;
+            background-color: #D8B9C3;
+            color: #333;
+        }
+
+  	header a, footer a {
+            color: #F2FFE9;
+        }
+        
+        header {
+            background-color: #720455;
+            color: #fff;
+            padding: 2em;
+            text-align: center;
+        }
+
+        #main-content {
+             max-width: 1200px;
+            margin: auto;
+            margin-top:20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+      
+
+        pre {
+            overflow: auto;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 70%;
+            height: auto;
+        }
+
+        blockquote {
+            background: #2d2d2d; /* Darker Gray for Blockquote */
+            border-left: 10px solid #FC6736;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #860A35;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #fff; /* Light Text Color for Heading */
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #511845; /* Light Text Color for Heading */
+        }
+
+        h3 {
+            font-size: 2em;
+            color: #E64848; /* Light Text Color for Heading */
+        }
+
+        h4 {
+            font-size: 1.8em;
+            color: #436850; /* Light Text Color for Heading */
+        }
+
+        h5 {
+            font-size: 1.5em;
+            color: #436850; /* Light Text Color for Heading */
+        }
+
+        h6 {
+            font-size: 1.2em;
+            color: #436850; /* Light Text Color for Heading */
+        }
+
+        strong {
+            color: #436850;
+        }
+
+        a {
+            color: #511845;
+            transition: color 0.5s;
+        }
+
+        a:hover {
+            color: #f45026;
+        }
+
+  p {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+  <header>
+        <h1>Linguistic-Based Mild Cognitive Impairment Detection Using Informative Loss</h1>
+    </header>
+
+     <div id="main-content">
+    <h2>Introduction</h2>
+         
+  <p> I proposed a deep learning approach employing Natural Language Processing (NLP) techniques to differentiate between Mild Cognitive Impairment (MCI) and Normal Cognitive (NC) conditions in older adults. In this study, I presented a framework that analyzed transcripts obtained from video interviews conducted as part of the I-CONECT study project, a randomized controlled trial aimed at improving cognitive functions through video chats. My NLP framework comprised two Transformer-based modules: Sentence Embedding (SE) and Sentence Cross Attention (SCA). Initially, I utilized the SE module to capture contextual relationships among words within each sentence, while the SCA module extracted temporal features from sequences of sentences. These features were then employed by a Multi-Layer Perceptron (MLP) for subject classification into MCI or NC categories. To ensure the robustness of my model, I introduced a novel loss function called InfoLoss, which considered entropy reduction observed in each sentence sequence to enhance classification accuracy. The comprehensive evaluation of my model using the I-CONECT dataset demonstrated that my framework achieved an average area under the curve of 84.75% in distinguishing between MCI and NC.
+
+</p>
+
+	          
+</div>
+
+
+
+
+<div id="main-content">
+    <h2>Architecture</h2>
+    
+     <p> The framework comprises two Transformer-based modules: Sentence Embedding (SE) and Sentence Cross Attention (SCA). Initially, the SE module processes each part of the transcript from each subject's interview to capture the relationship between words, ultimately creating corresponding embedding vectors. To elaborate, within each interview, we have a collection of sentences, which may be complete sentences or phrases. For each of these sentences, the SE module is applied to generate the corresponding sentence embeddings. These embeddings are treated as a time series, upon which the SCA module operates to extract linguistic features for distinguishing between MCI and NC.</p>
+     
+	<img src="https://github.com/aliprf/infoloss/blob/main/arch.png?raw=true" alt="arch">
+</div>
+
+
+
+<div id="main-content">
+    <h2>InfoLoss</h2>
+    
+     <p> While the Cross-Entropy (CE) loss function is commonly used for classification tasks, I aim to enhance the discriminative capability of our framework. Hence, I introduce a novel loss function termed Informative Loss (InfoLoss), which considers the uncertainty associated with ground truth labels during the classification process. My proposed InfoLoss incorporates the number of sentences generated by each participant in their interview as an uncertainty factor. I demonstrate that incorporating these uncertainty factors leads to more accurate classification results. </p>
+     
+    <hr> 
+<h4> Accuracy and AUC:</h4>
+     
+	<img src="https://github.com/aliprf/infoloss/blob/main/auc.png?raw=true" alt="arch">
+	
+	   <hr> 
+<h4> Confusion Matrix:</h4>
+	<img src="https://github.com/aliprf/infoloss/blob/main/conf.png?raw=true" alt="arch">
+	
+	
+	   <hr> 
+<h4> Accuracy with respect to gender:</h4>
+	<img src="https://github.com/aliprf/infoloss/blob/main/gender-acc.png?raw=true" alt="arch">
+	
+	
+</div>
+
+
+
+
+
+<div id="main-content">
+    <ul>
+      
+       <li>
+       <strong>
+       	<a href="https://arxiv.org/pdf/2402.01690.pdf">Preprint</a>
+       </strong> 
+       </li>   
+       
+    
+    
+</div>
+    
+
+</body>
+
+</html>
